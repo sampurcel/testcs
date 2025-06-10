@@ -1,0 +1,24 @@
+name: Sync default detections
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * *'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      - name: Sync detections
+        env:
+          FALCON_CLIENT_ID: ${{ vars.FALCON_CLIENT_ID_DEFAULT }}
+          FALCON_CLIENT_SECRET: ${{ vars.FALCON_CLIENT_SECRET_DEFAULT }}
+          FALCON_CID: ${{ vars.FALCON_CID_DEFAULT }}
+        run: python scripts/sync_detections.py rules/default-rules.json
