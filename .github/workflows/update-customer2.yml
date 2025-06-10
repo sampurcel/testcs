@@ -18,7 +18,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: Sync detections
         env:
-          FALCON_CLIENT_ID: ${{ secrets.FALCON_CLIENT_ID_CUSTOMER2 }}
-          FALCON_CLIENT_SECRET: ${{ secrets.FALCON_CLIENT_SECRET_CUSTOMER2 }}
-          FALCON_CID: ${{ secrets.FALCON_CID_CUSTOMER2 }}
+          FALCON_CLIENT_ID: ${{ vars.FALCON_CLIENT_ID_CUSTOMER2 }}
+          FALCON_CLIENT_SECRET: ${{ vars.FALCON_CLIENT_SECRET_CUSTOMER2 }}
+          FALCON_CID: ${{ vars.FALCON_CID_CUSTOMER2 }}
         run: python scripts/sync_detections.py rules/customer2-rules.json

@@ -3,7 +3,7 @@
 This repository demonstrates how to manage CrowdStrike correlation rules using
 an **MSSP** setup. Each customer has a separate rule file and workflow that
 executes the `sync_detections.py` script with credentials stored in GitHub
-Secrets.
+secrets or repository variables.
 
 ## Structure
 
@@ -24,6 +24,7 @@ the rules it would submit.
 ## Usage
 
 Each workflow uses different credentials and rule files. Add the corresponding
-`FALCON_CLIENT_ID`, `FALCON_CLIENT_SECRET` and `FALCON_CID` secrets to your
-GitHub repository or organisation for each tenant. The workflows can be run
-manually or on a schedule to keep detection rules in sync.
+`FALCON_CLIENT_ID`, `FALCON_CLIENT_SECRET` and `FALCON_CID` secrets (or
+repository variables) to your GitHub repository or organisation for each
+tenant. The workflows can be run manually or on a schedule to keep detection
+rules in sync.

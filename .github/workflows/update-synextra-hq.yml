@@ -18,7 +18,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: Sync detections
         env:
-          FALCON_CLIENT_ID: ${{ secrets.FALCON_CLIENT_ID_SYNEXTRA_HQ }}
-          FALCON_CLIENT_SECRET: ${{ secrets.FALCON_CLIENT_SECRET_SYNEXTRA_HQ }}
-          FALCON_CID: ${{ secrets.FALCON_CID_SYNEXTRA_HQ }}
+          FALCON_CLIENT_ID: ${{ vars.FALCON_CLIENT_ID_SYNEXTRA_HQ }}
+          FALCON_CLIENT_SECRET: ${{ vars.FALCON_CLIENT_SECRET_SYNEXTRA_HQ }}
+          FALCON_CID: ${{ vars.FALCON_CID_SYNEXTRA_HQ }}
         run: python scripts/sync_detections.py rules/synextra-hq-rules.json
