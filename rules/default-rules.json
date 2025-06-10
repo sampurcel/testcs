@@ -1,0 +1,7 @@
+[
+  {
+    "name": "Default Rule",
+    "description": "Example default detection rule",
+    "enabled": true
+  }
+]
