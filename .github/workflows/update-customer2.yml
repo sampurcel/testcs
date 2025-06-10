@@ -1,0 +1,24 @@
+name: Sync Customer2 detections
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 5 * * *'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      - name: Sync detections
+        env:
+          FALCON_CLIENT_ID: ${{ secrets.FALCON_CLIENT_ID_CUSTOMER2 }}
+          FALCON_CLIENT_SECRET: ${{ secrets.FALCON_CLIENT_SECRET_CUSTOMER2 }}
+          FALCON_CID: ${{ secrets.FALCON_CID_CUSTOMER2 }}
+        run: python scripts/sync_detections.py rules/customer2-rules.json
